@@ -1,7 +1,9 @@
-# ConCop
+# <cnetre> ConCop </centre>
+### <centre> by </centre>
+## <centre> Shedrack David </centre>
 
 # About the dataset
-
+this dataset was gotten from kaggle, it contains 6,362,620 data points with 11 columns. it captures transactions that has occured both legit and fraud
 The below column reference:
 
 - step: represents a unit of time where 1 step equals 1 hour
