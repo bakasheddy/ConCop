@@ -6,7 +6,6 @@ import numpy as np
 
 import pickle
 
-df = pd.read_csv('Bank Customer Churn Prediction Dataset.csv')
 
 nav = st.sidebar.radio("Navigations", ['Home', 'Predictions'])
 
@@ -20,7 +19,12 @@ if nav == "Home":
 
     st.write("""### About dataset
 
-this dataset was gotten from kaggle, it contains 6,362,620 data points with 11 columns. it captures transactions that has occured both legit and fraud The below column reference:
+The lack of legitimate datasets on mobile money transac-tions to perform research on in the domain of fraud detection is a big problem today in the scientific community. Part of the problem is the intrinsic private nature of financial transactions, that leads to no public available datasets. This will leave the researchers with the burden of first harnessing the dataset before performing the actual researchon it. This paper propose an approach to such a problemthat we named the PaySim simulator.
+
+PaySim is a financial simulator that simulates mobilemoney transactions based on an original dataset. In thispaper, we present a solution to ultimately yield the pos-sibility to simulate mobile money transactions in such away that they become similar to the original dataset. Withtechnology frameworks such as Agent-Based simulationtechniques, and the application of mathematical statistics,we show in this paper that the simulated data can be asprudent as the original dataset for research.
+This particular dataset was gotten from kaggle, it contains 6,362,620 data points with 11 columns which captures transactions that has occured in the simulator, both legitimate and fraudulent.
+
+Below are the column reference:
 
 - step: represents a unit of time where 1 step equals 1 hour
 - type: type of online transaction
@@ -32,9 +36,12 @@ this dataset was gotten from kaggle, it contains 6,362,620 data points with 11 c
 - oldbalanceDest: initial balance of recipient before the transaction
 - newbalanceDest: the new balance of recipient after the transaction
 - isFraud: fraud transaction
+
+link to paper [here](https://www.researchgate.net/publication/313138956_PAYSIM_A_FINANCIAL_MOBILE_MONEY_SIMULATOR_FOR_FRAUD_DETECTION)
     """
              )
-    st.dataframe(df)
+    #df = pd.read_csv('')
+    # st.dataframe(df)
 
 elif nav == 'Predictions':
     st.image('./images/Payment-Fraud-Detection_Overgraph.JPG')
@@ -93,13 +100,3 @@ elif nav == 'Predictions':
     st.write('Will this person churn?')
     st.write(predictions)
     st.write('---')
-
-    # plot graph of feature importances for better visualization
-    feat_importances = pd.Series(
-        loaded_model.feature_importances_, index=dff.columns)
-    feat_importances.nlargest(10).plot(kind='barh')
-    plt.title('Most important features for prediction')
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    plt.style.use('ggplot')
-    plt.grid(visible=False)
-    st.pyplot()
