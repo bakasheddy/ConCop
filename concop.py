@@ -15,7 +15,7 @@ if nav == "Home":
     # ConCop
     """)
 
-    st.image('./images/Payment-Fraud-Detection_Overgraph.JPG')
+    st.image('./images/Payment-Fraud-Detection_Overgraph.jpg')
 
     st.write("""### About dataset
 
@@ -41,9 +41,16 @@ link to paper [here](https://www.researchgate.net/publication/313138956_PAYSIM_A
     """
              )
     st.dataframe(df.head(20))
+    st.write("""
+        by Shedrack David
+        connect with me on [linkedin](https://www.linkedin.com/in/shedrack-david-1a116b235/)
+        
+        click [here](https://github.com/bakasheddy/ConCop.git) to view project on github, and check out my [Portfolio](bakasheddy.github.io/Portfolio/)
+        """)
+    
 
 elif nav == 'Predictions':
-    st.image('./images/Payment-Fraud-Detection_Overgraph.JPG')
+    st.image('./images/Payment-Fraud-Detection_Overgraph.jpg')
     st.sidebar.subheader('set parameters for predictions')
 
     def user_input_features():
@@ -99,3 +106,13 @@ elif nav == 'Predictions':
         predictions = 'no'
     st.write(predictions)
     st.write('---')
+    
+    #plot graph of feature importances for better visualization
+    feat_importances = pd.Series(loaded_model.feature_importances_, index= dff.columns)
+    feat_importances.nlargest(10).plot(kind='barh')
+    plt.title('Most important features for prediction')
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    plt.style.use('ggplot')
+    plt.grid(visible=False)
+    st.pyplot()
+
