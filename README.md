@@ -2,6 +2,8 @@
 ### <centre> by </centre>
 ## <centre> Shedrack David </centre>
 
+#### click [here](https://bakasheddy-concop-concop-wenurc.streamlit.app/) to view live model
+
 # About the dataset
 The lack of legitimate datasets on mobile money transac-tions to perform research on in the domain of fraud detection is a big problem today in the scientific community. Part of the problem is the intrinsic private nature of financial transactions, that leads to no public available datasets. This will leave the researchers with the burden of first harnessing the dataset before performing the actual researchon it. This paper propose an approach to such a problemthat we named the PaySim simulator.
 
