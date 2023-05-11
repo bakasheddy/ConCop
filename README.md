@@ -27,3 +27,11 @@ Below are the column reference:
 - oldbalanceDest: initial balance of recipient before the transaction
 - newbalanceDest: the new balance of recipient after the transaction
 - isFraud: fraud transaction
+
+# Findings
+- most fraudulent transactions are of high amount above the 75% quantile
+- for every fraud transactions, the transaction type is always cashouts and transfers
+
+# Model Evaluation
+this model was trained on the original dataset which had over 6 million transactions using the Random forest classifier, an attempt was made to boost it using the xgboost but it produced more false positives and dropped the f-1 score and the recall so the random forest classifier was selected without boost.
+![image](./images/model.jpg)
