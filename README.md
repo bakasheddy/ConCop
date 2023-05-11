@@ -28,6 +28,8 @@ Below are the column reference:
 - newbalanceDest: the new balance of recipient after the transaction
 - isFraud: fraud transaction
 
+link to paper [here](https://www.researchgate.net/publication/313138956_PAYSIM_A_FINANCIAL_MOBILE_MONEY_SIMULATOR_FOR_FRAUD_DETECTION)
+
 # Findings
 - most fraudulent transactions are of high amount above the 75% quantile
 - for every fraud transactions, the transaction type is always cashouts and transfers
