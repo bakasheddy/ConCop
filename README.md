@@ -34,4 +34,4 @@ Below are the column reference:
 
 # Model Evaluation
 this model was trained on the original dataset which had over 6 million transactions using the Random forest classifier, an attempt was made to boost it using the xgboost but it produced more false positives and dropped the f-1 score and the recall so the random forest classifier was selected without boost.
-![image](./images/model.jpg)
+![image](./images/model.JPG)
