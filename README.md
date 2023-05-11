@@ -1,8 +1,13 @@
+
+![image](./images/Payment-Fraud-Detection_Overgraph.jpg)
 # <cnetre> ConCop </centre>
 ### <centre> by </centre>
 ## <centre> Shedrack David </centre>
 
 #### click [here](https://bakasheddy-concop-concop-wenurc.streamlit.app/) to view live model
+
+# Aim
+The objective is to develop a robust predictive model capable of accurately discerning fraudulent transactions from legitimate ones.
 
 # About the dataset
 The lack of legitimate datasets on mobile money transac-tions to perform research on in the domain of fraud detection is a big problem today in the scientific community. Part of the problem is the intrinsic private nature of financial transactions, that leads to no public available datasets. This will leave the researchers with the burden of first harnessing the dataset before performing the actual researchon it. This paper propose an approach to such a problemthat we named the PaySim simulator.
