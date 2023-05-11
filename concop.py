@@ -48,11 +48,7 @@ elif nav == 'Predictions':
 
     def user_input_features():
 
-        newbalanceDest = st.sidebar.number_input('newbalanceDest', max_value=3.561793e+08)
-        oldbalanceOrg = st.sidebar.number_input('oldbalanceOrg', max_value=5.958504e+07)
-        amount = st.sidebar.number_input('amount', max_value=9.244552e+07)
-        step = st.sidebar.number_input('step', min_value=1, max_value=743)  
-        oldbalanceDest = st.sidebar.number_input('oldbalanceDest', max_value=3.560159e+08)
+        step = st.sidebar.number_input('step', min_value=1, max_value=743) 
         
         type = st.sidebar.selectbox('type', ['CASH_OUT', 'PAYMENT', 'CASH_IN', 'TRANSFER', 'DEBIT'], index=1)
         if type == 'CASH_OUT':
@@ -65,14 +61,21 @@ elif nav == 'Predictions':
             type = 4
         elif type == 'DEBIT':
             type = 5
+            
+        amount = st.sidebar.number_input('amount', max_value=9.244552e+07)
+        oldbalanceOrg = st.sidebar.number_input('oldbalanceOrg', max_value=5.958504e+07)
         newbalanceOrig = st.sidebar.number_input('newbalanceOrig', max_value=4.958504e+07)
-        
+        oldbalanceDest = st.sidebar.number_input('oldbalanceDest', max_value=3.560159e+08)
+        newbalanceDest = st.sidebar.number_input('newbalanceDest', max_value=3.561793e+08)
+         
         data = {
-            'newbalanceDest': newbalanceDest,
-            'oldbalanceOrg': oldbalanceOrg,
-            'amount': amount,
             'step': step,
-            'oldbalanceDest': oldbalanceDest
+            'type': type,
+            'amount': amount,
+            'oldbalanceOrg': oldbalanceOrg,
+            'newbalanceOrig': newbalanceOrig,
+            'oldbalanceDest': oldbalanceDest,
+            'newbalanceDest': newbalanceDest    
             }
         feautres = pd.DataFrame(data, index=[0])
         return feautres
@@ -84,10 +87,15 @@ elif nav == 'Predictions':
     loaded_model = pickle.load(open(file_name, 'rb'))
     predictions = loaded_model.predict(dff)
 
-    st.write('Fraud probability')
-    prob = loaded_model.predict_proba(dff)
-    st.write(prob)
+    st.write('fraud probability (%)')
+    prob = loaded_model.predict_proba(dff) * 100
+    st.write(prob, '1 means yes, 0 means no')
+    st.write('---')
 
     st.write('is this transaction fraudulent?')
+    if predictions == 1:
+        predictions = 'yes'
+    else:
+        predictions = 'no'
     st.write(predictions)
     st.write('---')
