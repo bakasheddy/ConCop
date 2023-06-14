@@ -6,6 +6,12 @@ import numpy as np
 
 import pickle
 
+[db_credentials]
+username = "db_username"
+password = "db_password"
+# Verbose version
+my_db.connect(username=st.secrets.db_credentials.username, password=st.secrets.db_credentials.password)
+
 df = pd.read_csv('sampled_data.csv')
 nav = st.sidebar.radio("Navigations", ['Home', 'Predictions'])
 
