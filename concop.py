@@ -6,12 +6,6 @@ import numpy as np
 
 import pickle
 
-[db_credentials]
-username = "db_username"
-password = "db_password"
-# Verbose version
-my_db.connect(username=st.secrets.db_credentials.username, password=st.secrets.db_credentials.password)
-
 df = pd.read_csv('sampled_data.csv')
 nav = st.sidebar.radio("Navigations", ['Home', 'Predictions'])
 
@@ -53,7 +47,7 @@ link to paper [here](https://www.researchgate.net/publication/313138956_PAYSIM_A
         
         click [here](https://github.com/bakasheddy/ConCop.git) to view project on github, and check out my [Portfolio](bakasheddy.github.io/Portfolio/)
         """)
-    
+
 
 elif nav == 'Predictions':
     st.image('./images/Payment-Fraud-Detection_Overgraph.jpg')
@@ -61,9 +55,10 @@ elif nav == 'Predictions':
 
     def user_input_features():
 
-        step = st.sidebar.number_input('step', min_value=1, max_value=743) 
-        
-        type = st.sidebar.selectbox('type', ['CASH_OUT', 'PAYMENT', 'CASH_IN', 'TRANSFER', 'DEBIT'], index=1)
+        step = st.sidebar.number_input('step', min_value=1, max_value=743)
+
+        type = st.sidebar.selectbox(
+            'type', ['CASH_OUT', 'PAYMENT', 'CASH_IN', 'TRANSFER', 'DEBIT'], index=1)
         if type == 'CASH_OUT':
             type = 1
         elif type == 'PAYMENT':
@@ -74,13 +69,17 @@ elif nav == 'Predictions':
             type = 4
         elif type == 'DEBIT':
             type = 5
-            
+
         amount = st.sidebar.number_input('amount', max_value=9.244552e+07)
-        oldbalanceOrg = st.sidebar.number_input('oldbalanceOrg', max_value=5.958504e+07)
-        newbalanceOrig = st.sidebar.number_input('newbalanceOrig', max_value=4.958504e+07)
-        oldbalanceDest = st.sidebar.number_input('oldbalanceDest', max_value=3.560159e+08)
-        newbalanceDest = st.sidebar.number_input('newbalanceDest', max_value=3.561793e+08)
-         
+        oldbalanceOrg = st.sidebar.number_input(
+            'oldbalanceOrg', max_value=5.958504e+07)
+        newbalanceOrig = st.sidebar.number_input(
+            'newbalanceOrig', max_value=4.958504e+07)
+        oldbalanceDest = st.sidebar.number_input(
+            'oldbalanceDest', max_value=3.560159e+08)
+        newbalanceDest = st.sidebar.number_input(
+            'newbalanceDest', max_value=3.561793e+08)
+
         data = {
             'step': step,
             'type': type,
@@ -88,8 +87,8 @@ elif nav == 'Predictions':
             'oldbalanceOrg': oldbalanceOrg,
             'newbalanceOrig': newbalanceOrig,
             'oldbalanceDest': oldbalanceDest,
-            'newbalanceDest': newbalanceDest    
-            }
+            'newbalanceDest': newbalanceDest
+        }
         feautres = pd.DataFrame(data, index=[0])
         return feautres
     dff = user_input_features()
@@ -112,13 +111,13 @@ elif nav == 'Predictions':
         predictions = 'no'
     st.write(predictions)
     st.write('---')
-    
-    #plot graph of feature importances for better visualization
-    feat_importances = pd.Series(loaded_model.feature_importances_, index= dff.columns)
+
+    # plot graph of feature importances for better visualization
+    feat_importances = pd.Series(
+        loaded_model.feature_importances_, index=dff.columns)
     feat_importances.nlargest(10).plot(kind='barh')
     plt.title('Most important features for prediction')
     st.set_option('deprecation.showPyplotGlobalUse', False)
     plt.style.use('ggplot')
     plt.grid(visible=False)
     st.pyplot()
-
