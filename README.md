@@ -4,7 +4,7 @@
 ### <centre> by </centre>
 ## <centre> Shedrack David </centre>
 
-#### click [here](https://bakasheddy-concop-concop-wenurc.streamlit.app/) to view live model
+#### click [here](https://bakasheddy-concop-concop-ov6qa2.streamlit.app/) to view live model
 
 # Aim
 The objective is to develop a robust predictive model capable of accurately discerning fraudulent transactions from legitimate ones.
