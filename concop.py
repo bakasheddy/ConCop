@@ -95,7 +95,7 @@ elif nav == 'Predictions':
     st.header('Specified Parameters')
     st.write(dff)
     st.write('---')
-    file_name = 'ConCop_model.pkl'
+    file_name = './ConCop_model.pkl'
     loaded_model = pickle.load(open(file_name, 'rb'))
     predictions = loaded_model.predict(dff)
 
